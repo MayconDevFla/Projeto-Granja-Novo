@@ -2,11 +2,14 @@ package com.granjacontrol.granjacontrol.rest;
 
 import com.granjacontrol.granjacontrol.model.entity.Ciclo;
 import com.granjacontrol.granjacontrol.model.repository.CicloRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/ciclos")
@@ -19,9 +22,14 @@ public class CicloController {
         this.repository = repository;
     }
 
+    @GetMapping
+    public List<Ciclo> consultar(){
+        return repository.findAll();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Ciclo salvar( @RequestBody Ciclo ciclo){
+    public Ciclo salvar( @RequestBody @Valid Ciclo ciclo){
         return repository.save(ciclo);
     }
 

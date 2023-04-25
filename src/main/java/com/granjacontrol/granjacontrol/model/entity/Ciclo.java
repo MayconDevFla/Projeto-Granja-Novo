@@ -1,12 +1,12 @@
 package com.granjacontrol.granjacontrol.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import jakarta.persistence.*;
 
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -19,6 +19,7 @@ public class Ciclo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
 
     @Column(nullable = false)
     @NotNull(message = "{campo.peso.obrigatorio}")
